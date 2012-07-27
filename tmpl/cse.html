@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<GoogleCustomizations version="1.0">
+  <CustomSearchEngine>
+    <Title>{{ name|escape }}</Title>
+    <Context>
+      <BackgroundLabels>
+        <Label name="buckybase_cse" mode="FILTER"/>
+      </BackgroundLabels>
+    </Context>
+    <LookAndFeel nonprofit="true"/>
+  </CustomSearchEngine>
+  <Annotations>
+    <Annotation about="{{ pattern|escape }}">
+      <Label name="buckybase_cse"/>
+    </Annotation>
+  </Annotations>
+</GoogleCustomizations>

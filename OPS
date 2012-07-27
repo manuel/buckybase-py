@@ -1,0 +1,60 @@
+-*- outline -*-
+
+* Testing a new major version
+
+** Increment version in app.yaml
+
+** Upload & test version
+
+** Set as default version in dashboard
+
+** Increment version in maint/app.yaml
+
+* Revoking/refreshing secure key
+
+In case a session cookie theft happens, further damage can be
+prevented by revoking the secure key stored in the datastore.
+
+** In the Data Viewer, delete the single ZSecret object
+
+** Make a small change to bucky.py (e.g. add a comment line)
+
+(This is needed to poison the Python top-level cache.)
+
+** Update the app with appcfg
+
+python2.5 -d /path/to/google_appengine/appcfg.py update /path/to/bucky/
+
+* Maintenance mode
+
+In order to completely disable access to Buckybase it can be put into
+maintenance mode.  For this purpose, the `maint` directory contains a
+small Python webapp that prints a message.  Buckybase is replaced with
+this app.
+
+** Make sure that version in maint/app.yaml == bucky/app.yaml
+
+** Edit the maintenance message inside bucky/maint/maint.py
+
+** Test the maintenance app locally
+
+python2.5 -d /path/to/google_appengine/dev_appserver.py /path/to/bucky/maint/
+goto http://localhost:8080
+
+** Update the app with appcfg
+
+python2.5 -d /path/to/google_appengine/appcfg.py update /path/to/bucky/maint/
+
+** Write an explanatory message to the Buckybase Status feed at Friendfeed
+
+* Logging out all logged in users
+
+** In the the data viewer set the secure_key property of the single ZSecret instance to "nologin"
+
+** Make a small change to bucky.py (e.g. add a comment line)
+
+(This is needed to poison the Python top-level cache.)
+
+** Update the app with appcfg
+
+** To restore login, see "revoking/refreshing key"

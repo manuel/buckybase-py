@@ -1,0 +1,25 @@
+{% extends "action.html" %}
+
+{% block title %}buckybase / create account{% endblock %}
+
+{% block main %}
+<div class="mezzanine action_mezzanine">
+<h1>create account</h1>
+</div>
+<div class=action_content>
+<div class=error>{{ error|escape }}</div>
+<div>
+<form action="/register" method=post>
+username <small>(a-z, 0-9, -)</small><br>
+<input name=username type=text value="{{ username|escape }}"><p>
+email  <small>(will not be published, and I will only send you mail to help you recover your password)</small><br>
+<input name=email type=text value="{{ email|escape }}"><p>
+password<br>
+<input name=password type=password><p>
+repeat password<br>
+<input name=password2 type=password><p>
+<p><input type=submit value=OK></p>
+</form>
+</div>
+</div>
+{% endblock %}

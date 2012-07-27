@@ -1,0 +1,29 @@
+{% extends "feed_html.html" %}
+
+{% block feed_head %}
+<div class=mezzanine style="background-color: #00f; color: #c0c0c0;">
+<div class=cse>
+<form id="cref" action="http://www.google.com/cse">
+  <input type="hidden" name="cref" value="{{ feed.feed_cse_url|escape }}" />
+  <input type="text" name="q" size="25" />
+  <input type="submit" name="sa" value="search {{ feed.feed_title|escape }}" />
+</form>
+</div>
+<h1>{{ feed.feed_title|escape }} /</h1>
+</div>
+{% endblock feed_head %}
+
+{% block feed_body %}
+<div class=content>
+{% if pages %}
+{% for page in pages %}{% include "page_in_site.html" %}{% endfor %}
+{% else %}
+{% ifequal current_username feed.sitename %}
+<p>Welcome to your Buckybase account!</p>
+{% endifequal %}
+{% endif %}
+</div>
+{% endblock feed_body %}
+
+{% block view_button %}
+{% endblock view_button %}

@@ -1,0 +1,26 @@
+{% extends "action.html" %}
+
+{% block title %}buckybase / edit page{% endblock %}
+
+{% block main %}
+<div class="mezzanine action_mezzanine">
+<h1>edit page</h1>
+</div>
+<div class=action_content>
+<span class=error>{{ error|escape }}</span>
+<form action="/save_edit" method=POST accept-encoding="UTF-8">
+
+{% if old_title %}
+<input name=old_title type=hidden value="{{ old_title|escape }}">
+{% else %}
+<input name=old_title type=hidden value="{{ page.title|escape }}">
+{% endif %}
+
+<input class=edit name=title type=text value="{{ page.title|escape }}"><br>
+<textarea class=edit name=text rows=24 cols=80>{{ page.text|escape }}</textarea>
+<input type=hidden name=xsrf_key value="{{ xsrf_key|escape }}">
+<p class=delete>delete (really) <input type=checkbox name=delete></p>
+<p><input type=submit value=save></p>
+</form>
+</div>
+{% endblock %}

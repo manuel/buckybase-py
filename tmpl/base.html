@@ -1,0 +1,66 @@
+<html xmlns:bb="http://buckybase.appspot.com/sys/2008/bb/">
+<head>
+<title>{% block title %}buckybase{% endblock %}</title>
+<meta http-equiv=content-type content="text/html; charset=UTF-8"/>
+{% block extra_head %}{% endblock %}
+<style type="text/css">
+html, body, h1 { font-family: arial, sans-serif; margin: 0; padding: 0; }
+a { font-weight: bold; text-decoration: none; color: #00f; }
+a:visited { color: #639; } 
+a.blue:visited { color: #00f; }
+a.logo, a.logo:visited { color: #c0c0c0; letter-spacing: .25em; float: left; padding: .75em 1em; }
+.site_tools { float: right; padding: .75em 1em; background-color: #fff; }
+.main { clear: left; }
+.mezzanine { padding: .5em 1em; margin: 0; }
+.page_body { padding: 0 1em; }
+.byline { float: right; }
+.page_date { color: #999; float: right; padding: .5em 1em; }
+.content { margin: 0em 0em 1.5em 1em; }
+.content h1 { font-size: large; }
+.content .title_bar { border-left: 1px solid #999; }
+table.kv, .kv td, .kv th { padding: 0; margin: 0; font-weight: bold; }
+.kv th { vertical-align: top; padding-right: .25em; }
+.kv td { vertical-align: top; }
+.nihil { font-style: italic; color: #c0c0c0; }
+.title_bar { background-color: #c0c0c0; padding: .5em 1em; }
+.more_tools { border-top: 1px solid #c0c0c0; margin: 1em 1em 1.5em; color: #999; }
+.more_tools a:link, .more_tools a:visited { color: #999; font-weight: normal; }
+
+.feed_tools { font-weight: bold; float: right; padding: .25em .5em; margin: .75em 1em 0 0; }
+.cse { float: right; padding: .25em 0; }
+{% block extra_style %}{% endblock %}
+</style>
+</head>
+<body>
+
+<a class=logo href="/">buckybase</a>
+<div class=site_tools>
+{% block site_tools %}
+buckybase is in alpha &ndash; <a class=blue href="http://buckybase.blogspot.com/2008/06/introducing-buckybase.html">intro</a> | <a class=blue href="http://buckybase.blogspot.com/">blog</a> |
+{% if current_username %}
+<a class=blue href="/new">new page</a> |
+<a class=blue href="/{{ current_username|escape }}">your pages</a> |
+<a class=blue href="/logout">logout</a>
+{% else %}
+<a class=blue href="/register">create account</a> |
+<a class=blue href="/login">login</a>
+{% endif %}
+{% endblock %}
+</div>
+
+<div class=main>
+{% block main %}{% endblock %}
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4770462-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>

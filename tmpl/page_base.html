@@ -1,0 +1,31 @@
+<div class=page about="{{ page.url|escape }}">
+
+<div class=title_bar>
+<div class=byline>
+{% block page_pre %}
+
+{% ifequal page.username current_username %}
+<a class=blue href="{{ page.edit_url|escape }}">edit page</a> |
+{% endifequal %}
+
+<a class=blue href="{{ page.all_url|escape }}">view by all users</a>
+{% endblock %}
+</div>
+
+<h1>
+{% block title_prefix %}{% endblock %}
+{% block title %}{{ page.title|escape }}{% endblock %}
+</h1>
+</div>
+
+<div class=page_date>{{ page.updated_str|escape }}</div>
+
+<div class=page_body>
+{% if page.is_saved %}
+{{ page.render_text }}
+{% else %}
+<p class=nihil>This page doesn't exist.</p>
+{% endif %}
+</div>
+
+</div>

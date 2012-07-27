@@ -1,0 +1,21 @@
+{% extends "action.html" %}
+
+{% block title %}buckybase / login{% endblock %}
+
+{% block main %}
+<div class="mezzanine action_mezzanine">
+<h1>login</h1>
+</div>
+<div class=action_content>
+<div class=error>{{ error|escape }}</div>
+<div>
+<form action="/login" method=post>
+username<br>
+<input name=username type=text value="{{ username|escape }}"><p>
+password<br>
+<input name=password type=password><p>
+<input type=submit value=OK>
+</form>
+</div>
+</div>
+{% endblock %}

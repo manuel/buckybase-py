@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block view_button %}{% endblock %}
+
+{% block title %}buckybase / {{ page.sitename|escape }} / {{ page.title|escape }}{% endblock %}
+
+{% block main %}
+{% include "page_standalone.html" %}
+{% endblock %}

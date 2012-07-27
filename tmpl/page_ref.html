@@ -1,0 +1,7 @@
+{% extends "page_base.html" %}
+{% block title_prefix %}
+<a class=blue href="{{ page.site_url|escape }}">{{ page.sitename|escape }}</a> /
+{% endblock %}
+{% block title %}
+<a class=blue href="{{ page.url|escape }}">{{ page.title|escape }}</a>
+{% endblock %}

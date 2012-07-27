@@ -1,0 +1,21 @@
+{% extends "feed_html.html" %}
+
+{% block feed_head %}
+<div class=mezzanine style="background-color: #000; color: #c0c0c0;">
+<div class=cse>
+<form id="cref" action="http://www.google.com/cse">
+  <input type="hidden" name="cref" value="{{ feed.feed_cse_url|escape }}" />
+  <input type="text" name="q" size="25" />
+  <input type="submit" name="sa" value="search" />
+</form>
+</div>
+<h1>recent changes</h1>
+</div>
+{% endblock feed_head %}
+
+{% block feed_body %}
+<div class=content>{% for page in pages %}{% include "page_ref.html" %}{% endfor %}</div>
+{% endblock feed_body %}
+
+{% block view_button %}
+{% endblock view_button %}

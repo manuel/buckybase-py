@@ -1,0 +1,18 @@
+{% extends "action.html" %}
+
+{% block title %}buckybase / new page{% endblock %}
+
+{% block main %}
+<div class="mezzanine action_mezzanine">
+<h1>new page</h1>
+</div>
+<div class=action_content>
+<span class=error>{{ error|escape }}</span>
+<form action="/save_new" method=POST accept-encoding="UTF-8">
+<input name=title class=edit type=text value="{{ title|escape }}"><br>
+<textarea name=text class=edit rows=24 cols=80>{{ text|escape }}</textarea>
+<input type=hidden name=xsrf_key value="{{ xsrf_key|escape }}">
+<p><input type=submit value=save></p>
+</form>
+</div>
+{% endblock %}

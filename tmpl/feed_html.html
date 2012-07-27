@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link rel=alternate type="application/atom+xml" href="{{ feed.feed_url_wo_hostname|escape }}">
+{% if view_as_table %}
+<style type="text/css">
+table.data { padding: 0; margin: 0 1em 0 0; }
+.data th, .data td { text-align: left; vertical-align: top; padding: .25em; font-weight: bold; }
+.data td { background-color: #c0c0c0; }
+.header { color: blue; cursor: pointer; }
+.headerSortUp, .headerSortDown { background-color: #00f; color: #fff; }
+</style>
+<script src="/static/jquery-1.2.6.min.js"></script>
+<script src="/static/jquery.tablesorter.min.js"></script>
+<script>$(document).ready(function() { $("#data").tablesorter({ sortList: [[0,0]] }) })</script>
+{% endif %}
+{% endblock extra_head %}
+
+{% block title %}buckybase / {{ feed.feed_title|escape }}{% endblock %}
+
+{% block main %}
+
+{% block view_button %}
+<div style="border: 1px solid #000;" class=feed_tools>
+{% if view_as_table %}
+<a class=blue href="{{ feed.feed_html_url_wo_hostname|escape }}">view as list</a>
+{% else %}
+<a class=blue href="{{ feed.feed_html_url_wo_hostname|escape }}?view=table">view as table</a>
+{% endif %}
+</div>
+{% endblock view_button %}
+
+{% block feed_head %}
+{% endblock feed_head %}
+
+{% if not view_as_table %}
+  {% block feed_body %}
+  {% endblock feed_body %}
+{% else %}
+<div class=content>
+  {{ feed.table_view }}
+</div>
+{% endif %}
+
+{% endblock main %}
